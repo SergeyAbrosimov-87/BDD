@@ -23,3 +23,4 @@
 
 Это ключевой кейс, который нужно протестировать.
 
+[![Java CI with Gradle](https://github.com/SergeyAbrosimov-87/BDD/actions/workflows/gradle.yml/badge.svg)](https://github.com/SergeyAbrosimov-87/BDD/actions/workflows/gradle.yml)
