@@ -9,32 +9,12 @@ public class DataHelper {
     private DataHelper() {
     }
 
-    public static int generateValidAmount(int balance) {
-        return new Random().nextInt(Math.abs(balance)) + 1; // генерирует рандомное число баланса карты
-    }
-
-    public static int generateInvalidAmount(int balance) {
-        return Math.abs(balance) + new Random().nextInt(10000) + 1;
+    public static VerificationCode getVerificationCode() {
+        return new VerificationCode("12345");
     }
 
     public static AuthInfo getAuthInfo() {
         return new AuthInfo("vasya", "qwerty123");
-    }
-
-    public static AuthInfo getRandomLogin() {
-        return new AuthInfo(getGenerateLogin("en"), getAuthInfo().getPassword());
-    }
-
-    private static String getGenerateLogin(String en) {
-        return null;
-    }
-
-    public static AuthInfo getRandomPassword() {
-        return new AuthInfo(getAuthInfo().getLogin(), getGeneratePassword("en"));
-    }
-
-    private static String getGeneratePassword(String en) {
-        return null;
     }
 
     public static CardInfo getFirstCardInfo() {
@@ -45,25 +25,30 @@ public class DataHelper {
         return new CardInfo("5559 0000 0000 0002", "0f3f5c2a-249e-4c3d-8287-09f7a039391d");
     }
 
+    public static int generateValidAmount(int balance) {
+        return Math.abs(balance) / 10;
+    }
+
+    public static int generateInvalidAmount(int balance) {
+        return Math.abs(balance) + 1;
+    }
+
+    @Value
+    public static class VerificationCode {
+        String code;
+    }
+
+
     @Value
     public static class CardInfo {
-        private String numberCard;
-        private String testId;
+        String numberCard;
+        String testId;
     }
 
     @Value
     public static class AuthInfo {
-        private String login;
-        private String password;
-    }
-
-    @Value
-    public static class VerificatinCode {
-        private String code;
-    }
-
-    public static VerificatinCode getVerificatinCode(AuthInfo authInfo) {
-        return new VerificatinCode("12345");
+        String login;
+        String password;
     }
 
 }

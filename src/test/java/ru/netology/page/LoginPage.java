@@ -26,8 +26,4 @@ public class LoginPage {
         buttonField.click();
     }
 
-    public void errorMessage(String expectedText) {
-        error.shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль"))
-                .shouldBe(visible, Duration.ofSeconds(15));
-    }
 }
